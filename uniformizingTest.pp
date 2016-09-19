@@ -3,6 +3,10 @@ class puppetEnvironmentTest {
   # stuff missing from virtual machines
   $wantedPackages = ['ntp','curl','htop','ssh', 'sshfs', 'git','nmap','hexchat','libreoffice','pulseaudio','workrave','virtualbox']
   package { $wantedPackages: ensure => installed }
+ 
+ 
+ #finish installing language support
+ sudo apt install $(check-language-support)
   
   #~~~~~~
   #this will probably break puppet-master, use on an agent, or a separate machine
