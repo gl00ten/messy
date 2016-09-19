@@ -19,6 +19,7 @@ def fixtures(teams):
     return fixtures
 
 fixtures1 = fixtures(teams)
+random.shuffle(fixtures1)
 print('fixtures1')
 print(fixtures1)
 
