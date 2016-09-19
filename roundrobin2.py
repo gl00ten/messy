@@ -1,6 +1,6 @@
 '''round robin tournament matches generator'''
 
-
+import random
 # demo code
 teams = ["Team1", "Team2", "Team3", "Team4", "Team5"]
 
@@ -19,7 +19,6 @@ def fixtures(teams):
     return fixtures
 
 fixtures1 = fixtures(teams)
-
 print('fixtures1')
 print(fixtures1)
 
@@ -28,7 +27,7 @@ fixtures2 = []
 for turn in fixtures1:
     newTurn = []
     while len(turn) > 0:
-        newTurn.append([turn.pop(0),turn.pop(0)])
+        newTurn.append([turn.pop(0),turn.pop(-1)])
     fixtures2.append(newTurn)
 
 print('fixtures2')
@@ -44,5 +43,8 @@ def printout(team):
                 print(match[::-1])
                 break
 
-printout('Team2')
+
+for i in range(len(teams)):
+ print(teams[i])
+ printout(teams[i])
                 
