@@ -1,7 +1,7 @@
 
 class puppetEnvironmentTest {
   # stuff missing from virtual machines
-  $wantedPackages = ['ntp','curl','htop','ssh', 'sshfs', 'git','nmap','hexchat','libreoffice','pulseaudio','workrave','virtualbox']
+  $wantedPackages = ['ntp','curl','htop','ssh', 'sshfs', 'git','nmap','hexchat','libreoffice','pulseaudio','workrave','virtualbox','keepassx']
   package { $wantedPackages: ensure => installed }
  
  
