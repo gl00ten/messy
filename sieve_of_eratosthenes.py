@@ -1,6 +1,6 @@
-#Sieve of Eratosthenes
-#Crivo de Eratóstenes
-#fullmooninu 2018
+# Sieve of Eratosthenes
+# Crivo de Eratóstenes
+# fullmooninu 2018
 
 
 import sys
