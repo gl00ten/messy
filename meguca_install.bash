@@ -61,8 +61,14 @@ EOL
 
 puppet apply puppet_apply_me.pp
 
+
+svc -dk /etc/service/meguca
 cd /home/meguca
 git clone https://github.com/bakape/meguca.git
 cd meguca
 make
-chown -R meguca:meguca *
+chown -R meguca:meguca /home/meguca
+cd /home/meguca/meguca
+sudo -u meguca npm audit fix
+
+svc -u /etc/service/meguca
