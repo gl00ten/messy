@@ -49,7 +49,10 @@ user { 'meguca':
 
 daemontools::service {'meguca':
   ensure  => running,
-  command => 'sudo -u meguca /home/meguca/meguca/meguca -r',
+  service_script => '#!/bin/bash
+	cd /home/meguca/meguca
+	exec sudo -u meguca /home/meguca/meguca/meguca -r
+	',
   logpath => '/var/log/meguca',
 }
 EOL
