@@ -1,3 +1,6 @@
+#login to server, and run this file as root like so
+# bash meguca_install.bash
+
 #run as root
 #pre requisites: 
 #change hostname
