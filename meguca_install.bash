@@ -39,6 +39,7 @@ include nginx
 ::nginx::resource::server { 'exochan.org':
   listen_port => 80,
   proxy       => 'http://localhost:8000',
+  listen_options => 'default_server',
 }
 
 user { 'meguca':
@@ -72,3 +73,9 @@ cd /home/meguca/meguca
 sudo -u meguca npm audit fix
 
 svc -u /etc/service/meguca
+
+
+apt-get purge curl wget apt-transport-https dirmngr build-essential make gcc -y
+apt-get autoremove --purge -y
+apt-get autoclean -y
+reboot
