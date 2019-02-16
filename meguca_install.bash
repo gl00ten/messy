@@ -44,6 +44,7 @@ include nginx
 user { 'meguca':
   ensure => 'present',
   home   => '/home/meguca',
+  managehome => true,
   shell  => '/bin/bash'
 }
 
@@ -61,6 +62,7 @@ EOL
 puppet apply puppet_apply_me.pp
 
 cd /home/meguca
-sudo -u meguca git clone https://github.com/bakape/meguca.git
+git clone https://github.com/bakape/meguca.git
 cd meguca
-sudo -u meguca make
+make
+chown -R meguca:meguca *
