@@ -61,6 +61,6 @@ EOL
 puppet apply puppet_apply_me.pp
 
 cd /home/meguca
-sudo -u meguca git clone https://github.com/bakape/meguca.git /server/meguca
+sudo -u meguca git clone https://github.com/bakape/meguca.git
 cd meguca
 sudo -u meguca make
