@@ -40,5 +40,9 @@ echo "
 /usr/sbin/a2enmod vhost_alias
 /usr/bin/systemctl restart apache2
 
-#mysql_secure_installation
-#reboot
+apt install ufw
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+mysql_secure_installation
+reboot
