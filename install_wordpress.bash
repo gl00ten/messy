@@ -40,8 +40,8 @@ echo "
 /usr/bin/systemctl restart apache2
 
 apt install ufw -y
-sudo ufw allow ssh
-sudo ufw allow http
-sudo ufw allow https
+ufw allow ssh
+ufw allow http
+ufw allow https
 mysql_secure_installation
 reboot
