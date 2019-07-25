@@ -33,14 +33,13 @@ echo "
         CustomLog ${APACHE_LOG_DIR}/access.log combined
 
 </VirtualHost>
-
 " > /etc/apache2/sites-enabled/000-default.conf
 
 /usr/sbin/a2enmod rewrite
 /usr/sbin/a2enmod vhost_alias
 /usr/bin/systemctl restart apache2
 
-apt install ufw
+apt install ufw -y
 sudo ufw allow ssh
 sudo ufw allow http
 sudo ufw allow https
