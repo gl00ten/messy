@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
-#bash file to install wordpress on debian ?10
+#bash file to install wordpress on debian ~10
+#mainly made from here https://wiki.debian.org/WordPress
 
 apt update
 apt-get dist-upgrade -y
