@@ -4,33 +4,35 @@
 
 apt update
 apt-get dist-upgrade -y
-apt install ntp wordpress curl apache2 mariadb-server iputils-ping -y
+apt install ntp wordpress curl apache2 mariadb-server iputils-ping fail2ban -y
 
 chmod +x /usr/share/doc/wordpress/examples/setup-mysql
 /usr/share/doc/wordpress/examples/setup-mysql localhost
 mv /etc/wordpress/config-localhost.php  /etc/wordpress/config-default.php
 
 echo "
-## Virtual host VirtualDocumentRoot
-
-NameVirtualHost *:80
-
 <VirtualHost *:80>
-UseCanonicalName Off
-VirtualDocumentRoot /usr/share/wordpress
-Options All
+        ServerName myblog.example.com
 
-# wp-content in /srv/www/wp-content/$0
-RewriteEngine On
-RewriteRule ^/wp-content/(.*)$ /srv/www/wp-content/%{HTTP_HOST}/$1
+        ServerAdmin webmaster@example.com
+        DocumentRoot /usr/share/wordpress
+
+        Alias /wp-content /var/lib/wordpress/wp-content
+        <Directory /usr/share/wordpress>
+            Options FollowSymLinks
+            AllowOverride Limit Options FileInfo
+            DirectoryIndex index.php
+            Require all granted
+        </Directory>
+        <Directory /var/lib/wordpress/wp-content>
+            Options FollowSymLinks
+            Require all granted
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
 </VirtualHost>
-
-RewriteRule ^index\.php$ - [L]
-RewriteCond /usr/share/wordpress%{REQUEST_URI} !-f
-RewriteCond /usr/share/wordpress%{REQUEST_URI} !-d
-RewriteRule . /usr/share/wordpress/index.php [L]
-# Also needed if using PHP-FPM / Fast-CGI
-RewriteCond %{REQUEST_URI} !^/php5-fcgi/*
 
 " > /etc/apache2/sites-enabled/000-default.conf
 
@@ -38,5 +40,5 @@ RewriteCond %{REQUEST_URI} !^/php5-fcgi/*
 /usr/sbin/a2enmod vhost_alias
 /usr/bin/systemctl restart apache2
 
-mysql_secure_installation
-reboot
+#mysql_secure_installation
+#reboot
