@@ -46,3 +46,9 @@ ufw allow http
 ufw allow https
 mysql_secure_installation
 reboot
+
+
+# ve onde ta instalado
+# chown www-data:www-data plugins themes
+# chmod 775 plugins themes
+# no wp-config.php adicionar a linha: define('FS_METHOD','direct');
