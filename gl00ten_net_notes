@@ -6,8 +6,11 @@ sudo caddy stop
 
 ## /etc/caddy/Caddyfile
 gl00ten.net {
-  root * /home/test1
+  root * /var/caddy/test1
   file_server
 }
+
+find /var/caddy -type d -exec chmod 755 {} \;
+find /var/caddy -type f -exec chmod 644 {} \;
 
 
