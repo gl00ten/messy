@@ -1,0 +1,13 @@
+ufw allow ssh http https
+
+#installed caddy from instructions from website
+sudo caddy start --config /etc/caddy/Caddyfile
+sudo caddy stop
+
+## /etc/caddy/Caddyfile
+gl00ten.net {
+  root * /home/test1
+  file_server
+}
+
+
